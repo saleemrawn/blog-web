@@ -1,4 +1,4 @@
-import api from "../../../adapters/api.js";
+import api from "../../../adapters/api";
 
 const basePath = "/posts";
 
