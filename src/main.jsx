@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { RegisterForm, LoginForm, AuthProvider } from "./features/auth";
 import { Post, PostForm, PostList } from "./features/post";
+import { Theme } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css";
 import "./index.css";
 import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
@@ -32,7 +34,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <Theme panelBackground="solid" radius="none" scaling="110%" hasBackground={false}>
+        <RouterProvider router={router} />
+      </Theme>
     </AuthProvider>
   </StrictMode>,
 );
