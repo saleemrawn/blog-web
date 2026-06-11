@@ -1,7 +1,22 @@
+import { Outlet } from "react-router";
+import { Header, Footer } from "./components";
+import { Box, Container, Grid } from "@radix-ui/themes";
 import "./App.css";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <Container height={"100vh"} p={{ initial: "3", lg: "0" }}>
+        <Grid columns={"1"} rows={"auto 1fr auto"} gap={"8"} height={"100%"}>
+          <Header />
+          <main>
+            <Outlet />
+          </main>
+          <Footer />
+        </Grid>
+      </Container>
+    </>
+  );
 }
 
 export default App;
