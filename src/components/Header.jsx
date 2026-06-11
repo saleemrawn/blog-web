@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { Box, Flex, Link as RadixLink, Container } from "@radix-ui/themes";
-import { Nav } from "./Nav";
+import { Nav } from "./";
 
 const LogoLink = () => {
   return (

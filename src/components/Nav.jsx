@@ -2,7 +2,7 @@ import { useAuthContext } from "../features/auth/context/AuthContext";
 import { useLogout } from "../features/auth/hooks/useAuth";
 import { Link } from "react-router";
 import { Button, Flex, Spinner, Text, Container, Box, Strong } from "@radix-ui/themes";
-import { ConfirmDialog } from "./ConfirmDialog";
+import { ConfirmDialog } from "./";
 
 const Greeting = ({ fullName }) => {
   return (
