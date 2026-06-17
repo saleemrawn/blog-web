@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
-import { useGetComments } from "../hooks/useComment";
 import { Flex, Heading, Text, Em } from "@radix-ui/themes";
 import { formatDistanceToNow } from "date-fns";
+import { CommentForm, useGetComments } from "../../comment";
 
 const CommentCard = ({ comment }) => {
   return (
@@ -30,11 +30,14 @@ const CommentCard = ({ comment }) => {
   );
 };
 
-export const CommentsList = ({ comments }) => {
+export const CommentsList = ({ comments, onCommentCreated }) => {
   return (
     <>
-      <Heading as="h3">Comments</Heading>
-      <Flex direction={"column"}>
+      <Heading as="h3" mb={"2"}>
+        Comments
+      </Heading>
+      <CommentForm onCommentCreated={onCommentCreated} />
+      <Flex direction={"column"} mt={"4"}>
         {comments.map((comment) => (
           <CommentCard key={comment.id} comment={comment} />
         ))}
