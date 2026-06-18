@@ -28,7 +28,7 @@ const useGetPostById = (postId) => {
     setIsLoading(true);
     postService
       .getPostById(postId)
-      .then((post) => setPost(post))
+      .then((post) => setPost(post.data))
       .catch((err) => setError(err))
       .finally(() => setIsLoading(false));
   }, [postId]);
