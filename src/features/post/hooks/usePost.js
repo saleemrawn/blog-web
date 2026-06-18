@@ -1,4 +1,4 @@
-import * as postService from "../services/post-service.js";
+import * as postService from "../services/postService";
 import { useEffect, useState } from "react";
 
 const useGetPosts = () => {
