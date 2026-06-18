@@ -6,14 +6,16 @@ const useGetPosts = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  const getPosts = () => {
     setIsLoading(true);
     postService
       .getPosts()
       .then((posts) => setPosts(posts.data))
       .catch((err) => setError(err))
       .finally(() => setIsLoading(false));
-  }, []);
+  };
+
+  useEffect(() => getPosts, []);
 
   return { posts, isLoading, error };
 };
