@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useGetPostById } from "../";
 import { useGetComments, CommentForm, CommentsList } from "../../comment";
