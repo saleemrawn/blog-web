@@ -25,14 +25,16 @@ const useGetPostById = (postId) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  const getPostById = () => {
     setIsLoading(true);
     postService
       .getPostById(postId)
       .then((post) => setPost(post.data))
       .catch((err) => setError(err))
       .finally(() => setIsLoading(false));
-  }, [postId]);
+  };
+
+  useEffect(() => getPostById, [postId]);
 
   return { post, isLoading, error };
 };
