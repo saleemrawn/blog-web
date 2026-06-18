@@ -24,7 +24,6 @@ const useGetPostById = (postId) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!postId) return;
     setIsLoading(true);
     postService
       .getPostById(postId)
