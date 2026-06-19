@@ -1,7 +1,8 @@
-import { useParams } from "react-router";
-import { Flex, Heading, Text, Em } from "@radix-ui/themes";
+import { useParams, Link } from "react-router";
+import { useAuthContext } from "../../auth";
 import { formatDistanceToNow } from "date-fns";
 import { CommentForm, useGetComments } from "../../comment";
+import { Flex, Heading, Text, Em, Button } from "@radix-ui/themes";
 
 const CommentCard = ({ comment }) => {
   return (
@@ -31,12 +32,33 @@ const CommentCard = ({ comment }) => {
 };
 
 export const CommentsList = ({ comments, onCommentCreated }) => {
+  const { isLoggedIn } = useAuthContext();
+
   return (
     <>
-      <Heading as="h3" mb={"2"}>
+      <Heading as="h3" mb={"3"}>
         Comments
       </Heading>
-      <CommentForm onCommentCreated={onCommentCreated} />
+      {isLoggedIn ? (
+        <CommentForm onCommentCreated={onCommentCreated} />
+      ) : (
+        <Flex align={"center"} gap={"2"}>
+          <Button size={{ md: "3" }} color="gray" highContrast asChild>
+            <Link to={"/sign-up"}>Sign-Up</Link>
+          </Button>
+          <Text>or</Text>
+          <Button
+            variant="outline"
+            size={{ md: "3" }}
+            color="gray"
+            highContrast
+            asChild
+          >
+            <Link to={"/login"}>Login</Link>
+          </Button>
+          <Text>to comment</Text>
+        </Flex>
+      )}
       <Flex direction={"column"} mt={"4"}>
         {comments.map((comment) => (
           <CommentCard key={comment.id} comment={comment} />
