@@ -4,11 +4,11 @@ import { Link } from "react-router";
 import { Button, Flex, Spinner, Text, Container, Box, Strong } from "@radix-ui/themes";
 import { ConfirmDialog } from "./";
 
-const Greeting = ({ fullName }) => {
+const Greeting = ({ name }) => {
   return (
     <Box display={{ initial: "none", xs: "block" }} mr={"4"}>
       <Text>
-        <Strong>Hello, {fullName}</Strong>
+        <Strong>Hello, {name}</Strong>
       </Text>
     </Box>
   );
@@ -28,10 +28,10 @@ const LoggedOutLinks = () => {
   );
 };
 
-const LoggedInLinks = ({ fullName, onLogout }) => {
+const LoggedInLinks = ({ name, onLogout }) => {
   return (
     <>
-      <Greeting fullName={fullName} />
+      <Greeting name={name} />
       <ConfirmDialog
         title={"Logout"}
         description={"Are you sure you want to logout?"}
@@ -53,7 +53,7 @@ export const Nav = () => {
   return (
     <nav>
       <Flex gap={"2"} align={"center"}>
-        {isLoggedIn ? <LoggedInLinks fullName={user?.fullName} onLogout={logout} /> : <LoggedOutLinks />}
+        {isLoggedIn ? <LoggedInLinks name={user?.firstName} onLogout={logout} /> : <LoggedOutLinks />}
       </Flex>
     </nav>
   );
