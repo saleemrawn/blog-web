@@ -11,13 +11,14 @@ const useCreateUser = () => {
     setIsLoading(true);
     setError(null);
 
-    return userService
-      .createUser({ firstName, lastName, username, password })
-      .then(() => navigate("/", { replace: true }))
-      .catch((err) => {
-        setError(err.response);
-      })
-      .finally(() => setIsLoading(false));
+    try {
+      await userService.createUser({ firstName, lastName, username, password });
+      navigate("/", { replace: true });
+    } catch (err) {
+      setError(err.response);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const resetError = () => setError(null);
