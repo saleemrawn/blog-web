@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import { SignUpForm, LoginForm, AuthProvider } from "./features/auth";
+import { SignupForm, LoginForm, AuthProvider } from "./features/auth";
 import { Post, PostForm, PostList } from "./features/post";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Home /> },
-      { path: "sign-up", element: <SignUpForm /> },
+      { path: "sign-up", element: <SignupForm /> },
       { path: "login", element: <LoginForm /> },
       {
         path: "posts",
@@ -34,7 +34,12 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
-      <Theme panelBackground="solid" radius="none" scaling="110%" hasBackground={false}>
+      <Theme
+        panelBackground="solid"
+        radius="none"
+        scaling="110%"
+        hasBackground={false}
+      >
         <RouterProvider router={router} />
       </Theme>
     </AuthProvider>
