@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { SignupForm, LoginForm, AuthProvider } from "./features/auth";
-import { Post, PostForm, PostList } from "./features/post";
+import { Post, PostList } from "./features/post";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import "./index.css";
