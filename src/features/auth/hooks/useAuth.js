@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { useAuthContext } from "../context/AuthContext";
+import { useAuthContext } from "../";
 import * as authService from "../services/authService";
 
 const useLogin = () => {

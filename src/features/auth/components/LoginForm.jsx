@@ -1,6 +1,6 @@
-import { useLogin } from "../hooks/useAuth";
 import { useState } from "react";
 import { Form } from "radix-ui";
+import { useLogin } from "../";
 import { Button, Flex, Heading, Spinner } from "@radix-ui/themes";
 
 export const LoginForm = () => {
