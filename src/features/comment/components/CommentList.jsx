@@ -2,7 +2,16 @@ import { useParams, Link } from "react-router";
 import { useAuthContext } from "../../auth";
 import { formatDistanceToNow } from "date-fns";
 import { CommentForm, useGetComments } from "../../comment";
-import { Flex, Heading, Text, Em, Button } from "@radix-ui/themes";
+import {
+  Flex,
+  Box,
+  Heading,
+  Text,
+  Em,
+  Button,
+  Badge,
+  Strong,
+} from "@radix-ui/themes";
 
 const CommentCard = ({ comment }) => {
   return (
@@ -31,14 +40,34 @@ const CommentCard = ({ comment }) => {
   );
 };
 
+const CommentCount = ({ comments }) => {
+  return (
+    <Box>
+      <Badge
+        variant="solid"
+        radius="full"
+        color="gray"
+        className="CommentCountBadge"
+        highContrast
+      >
+        <Text>
+          <Strong>{comments?.length}</Strong>
+        </Text>
+      </Badge>
+    </Box>
+  );
+};
+
 export const CommentsList = ({ comments, onCommentCreated }) => {
   const { isLoggedIn } = useAuthContext();
 
   return (
     <>
-      <Heading as="h3" mb={"3"}>
-        Comments
-      </Heading>
+      <Flex align={"center"} gap={"2"} mb={"3"}>
+        <Heading as="h3">Comments</Heading>
+        <CommentCount comments={comments} />
+      </Flex>
+
       {isLoggedIn ? (
         <CommentForm onCommentCreated={onCommentCreated} />
       ) : (
