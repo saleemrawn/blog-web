@@ -21,4 +21,10 @@ const createComment = async ({ content, authorId, postId }) => {
   return res.data;
 };
 
-export { getComments, getCommentsCount, createComment };
+const deleteComment = async ({ postId, commentId }) => {
+  const res = await api.delete(`${basePath}/${postId}/comments/${commentId}`);
+
+  return res.data;
+};
+
+export { getComments, getCommentsCount, createComment, deleteComment };
