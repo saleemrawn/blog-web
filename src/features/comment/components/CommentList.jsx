@@ -1,7 +1,8 @@
 import { useParams, Link } from "react-router";
 import { useAuthContext } from "../../auth";
 import { formatDistanceToNow } from "date-fns";
-import { CommentForm, useGetComments } from "../../comment";
+import { CommentForm, useGetComments, useDeleteComment } from "../../comment";
+import { ConfirmDialog } from "../../../components";
 import {
   Flex,
   Box,
@@ -13,7 +14,18 @@ import {
   Strong,
 } from "@radix-ui/themes";
 
-const CommentCard = ({ comment }) => {
+const CommentCard = ({ comment, isLoggedInUser, onCommentDelete }) => {
+  const { postId } = useParams();
+  const { deleteComment, isLoading, error } = useDeleteComment();
+
+  const handleDelete = async () => {
+    await deleteComment({
+      postId: Number(postId),
+      commentId: Number(comment.id),
+    });
+    await onCommentDelete();
+  };
+
   return (
     <>
       <Flex
@@ -24,16 +36,26 @@ const CommentCard = ({ comment }) => {
       >
         <Text>{comment.content}</Text>
 
-        <Flex gap={"3"}>
-          <Text size={"1"} weight={"bold"}>
-            {comment.author.fullName}
-          </Text>
-          <Text size={"1"}>
-            {formatDistanceToNow(comment.createdAt, {
-              includeSeconds: true,
-              addSuffix: true,
-            })}
-          </Text>
+        <Flex justify={"between"} align={"center"}>
+          <Flex gap={"3"}>
+            <Text size={"1"} weight={"bold"}>
+              {comment.author.fullName}
+            </Text>
+            <Text size={"1"}>
+              {formatDistanceToNow(comment.createdAt, {
+                includeSeconds: true,
+                addSuffix: true,
+              })}
+            </Text>
+          </Flex>
+          {isLoggedInUser ? (
+            <ConfirmDialog
+              title={"Delete comment"}
+              description={"Are you sure you want to delete?"}
+              buttonText={"Delete"}
+              onClick={handleDelete}
+            />
+          ) : null}
         </Flex>
       </Flex>
     </>
@@ -58,8 +80,12 @@ const CommentCount = ({ comments }) => {
   );
 };
 
-export const CommentsList = ({ comments, onCommentCreated }) => {
-  const { isLoggedIn } = useAuthContext();
+export const CommentsList = ({
+  comments,
+  onCommentCreated,
+  onCommentDelete,
+}) => {
+  const { user, isLoggedIn } = useAuthContext();
 
   return (
     <>
@@ -89,9 +115,16 @@ export const CommentsList = ({ comments, onCommentCreated }) => {
         </Flex>
       )}
       <Flex direction={"column"} mt={"4"}>
-        {comments.map((comment) => (
-          <CommentCard key={comment.id} comment={comment} />
-        ))}
+        {comments.map((comment) =>
+          comment.deletedAt === null ? (
+            <CommentCard
+              key={comment.id}
+              comment={comment}
+              isLoggedInUser={comment.authorUserId === user?.id}
+              onCommentDelete={onCommentDelete}
+            />
+          ) : null,
+        )}
       </Flex>
     </>
   );
