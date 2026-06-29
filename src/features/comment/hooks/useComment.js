@@ -65,4 +65,29 @@ const useCreateComment = () => {
   return { createComment, isLoading, error, resetError };
 };
 
-export { useGetComments, useGetCommentsCount, useCreateComment };
+const useDeleteComment = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const deleteComment = async ({ postId, commentId }) => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      await commentService.deleteComment({ postId, commentId });
+    } catch (err) {
+      setError(err.response);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return { deleteComment, isLoading, error };
+};
+
+export {
+  useGetComments,
+  useGetCommentsCount,
+  useCreateComment,
+  useDeleteComment,
+};
