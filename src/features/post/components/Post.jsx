@@ -53,6 +53,7 @@ export const Post = () => {
                 comments={comments}
                 isLoading={isLoading}
                 onCommentCreated={refetch}
+                onCommentDelete={refetch}
               />
             </Box>
           </Skeleton>
