@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@radix-ui/themes";
+import { Box, Flex, Text, Callout } from "@radix-ui/themes";
 
 const ERROR_MESSAGES = {
   ERR_NETWORK: "Unable to connect to server.",
@@ -32,13 +32,10 @@ export const ErrorMessage = ({ error }) => {
   const errorMessage = getErrorMessage(error);
 
   return (
-    <Box>
-      <Flex direction={"column"} gap={"2"} role="alert">
-        <Text size={"6"} weight={"bold"}>
-          {errorMessage}
-        </Text>
-        <Text>{errorCode}</Text>
-      </Flex>
-    </Box>
+    <Callout.Root color="red">
+      <Callout.Text>
+        {errorCode} - {errorMessage}
+      </Callout.Text>
+    </Callout.Root>
   );
 };
