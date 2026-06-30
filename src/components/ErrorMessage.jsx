@@ -32,7 +32,7 @@ export const ErrorMessage = ({ error }) => {
   const errorMessage = getErrorMessage(error);
 
   return (
-    <Callout.Root color="red">
+    <Callout.Root color="red" size={{ initial: "2", md: "3" }}>
       <Callout.Text>
         {errorCode} - {errorMessage}
       </Callout.Text>
