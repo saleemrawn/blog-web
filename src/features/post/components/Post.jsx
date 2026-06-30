@@ -3,6 +3,7 @@ import { useGetPostById } from "../";
 import {
   useGetComments,
   useGetCommentsCount,
+  useDeleteComment,
   CommentForm,
   CommentsList,
 } from "../../comment";
@@ -35,6 +36,17 @@ export const Post = () => {
     error: commentsCountError,
     refetch: refetchCommentsCount,
   } = useGetCommentsCount(postId);
+  const {
+    deleteComment,
+    isLoading: isDeleteCommentLoading,
+    error: commentDeleteError,
+  } = useDeleteComment();
+
+  const handleCommentDelete = async (commentId) => {
+    await deleteComment({ postId, commentId });
+    refetchComments();
+    refetchCommentsCount();
+  };
 
   const isLoading =
     isPostLoading || isCommentsLoading || isCommentsCountLoading;
@@ -69,10 +81,7 @@ export const Post = () => {
                   refetchComments();
                   refetchCommentsCount();
                 }}
-                onCommentDelete={() => {
-                  refetchComments();
-                  refetchCommentsCount();
-                }}
+                onCommentDelete={handleCommentDelete}
               />
             </Box>
           </Skeleton>

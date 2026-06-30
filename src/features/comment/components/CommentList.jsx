@@ -15,17 +15,6 @@ import {
 } from "@radix-ui/themes";
 
 const CommentCard = ({ comment, isLoggedInUser, onCommentDelete }) => {
-  const { postId } = useParams();
-  const { deleteComment, isLoading, error } = useDeleteComment();
-
-  const handleDelete = async () => {
-    await deleteComment({
-      postId: Number(postId),
-      commentId: Number(comment.id),
-    });
-    await onCommentDelete();
-  };
-
   return (
     <>
       <Flex
@@ -53,7 +42,7 @@ const CommentCard = ({ comment, isLoggedInUser, onCommentDelete }) => {
               title={"Delete comment"}
               description={"Are you sure you want to delete?"}
               buttonText={"Delete"}
-              onClick={handleDelete}
+              onClick={() => onCommentDelete(comment.id)}
             />
           ) : null}
         </Flex>
