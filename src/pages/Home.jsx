@@ -1,7 +1,10 @@
-import { PostList } from "../features/post";
-import { Box, Container, Heading } from "@radix-ui/themes";
+import { ErrorMessage } from "../components/ErrorMessage";
+import { useGetPosts, PostList } from "../features/post";
+import { Box, Container, Heading, Skeleton } from "@radix-ui/themes";
 
 const Home = () => {
+  const { posts, isLoading, error } = useGetPosts();
+
   return (
     <>
       <Box>
@@ -9,7 +12,10 @@ const Home = () => {
           <Heading size={{ initial: "8", md: "9" }} mb={"4"}>
             Latest
           </Heading>
-          <PostList />
+          <Skeleton loading={isLoading}>
+            {error ? <ErrorMessage error={error} /> : null}
+            <PostList posts={posts} />
+          </Skeleton>
         </Container>
       </Box>
     </>
