@@ -15,7 +15,9 @@ const useGetPosts = () => {
       .finally(() => setIsLoading(false));
   };
 
-  useEffect(() => getPosts, []);
+  useEffect(() => {
+    getPosts();
+  }, []);
 
   return { posts, isLoading, error };
 };
