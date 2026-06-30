@@ -36,7 +36,9 @@ const useGetCommentsCount = (postId) => {
       .finally(() => setIsLoading(false));
   };
 
-  useEffect(() => fetchCommentsCount, []);
+  useEffect(() => {
+    fetchCommentsCount();
+  }, []);
 
   return { count, isLoading, error, refetch: fetchCommentsCount };
 };
