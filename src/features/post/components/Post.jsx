@@ -27,7 +27,7 @@ export const Post = () => {
     comments,
     isLoading: isCommentsLoading,
     error: commentsError,
-    refetch,
+    refetch: refetchComments,
   } = useGetComments(postId);
   const {
     count: commentsCount,
@@ -64,8 +64,14 @@ export const Post = () => {
                 comments={comments}
                 commentsCount={commentsCount}
                 isLoading={isLoading}
-                onCommentCreated={refetch}
-                onCommentDelete={refetch}
+                onCommentCreated={() => {
+                  refetchComments();
+                  refetchCommentsCount();
+                }}
+                onCommentDelete={() => {
+                  refetchComments();
+                  refetchCommentsCount();
+                }}
               />
             </Box>
           </Skeleton>
