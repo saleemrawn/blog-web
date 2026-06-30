@@ -15,7 +15,9 @@ const useGetComments = (postId) => {
       .finally(() => setIsLoading(false));
   };
 
-  useEffect(() => fetchComments, [postId]);
+  useEffect(() => {
+    fetchComments();
+  }, [postId]);
 
   return { comments, isLoading, error, refetch: fetchComments };
 };
