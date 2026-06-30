@@ -62,7 +62,7 @@ const CommentCard = ({ comment, isLoggedInUser, onCommentDelete }) => {
   );
 };
 
-const CommentCount = ({ comments }) => {
+const CommentCount = ({ commentsCount }) => {
   return (
     <Box>
       <Badge
@@ -73,7 +73,7 @@ const CommentCount = ({ comments }) => {
         highContrast
       >
         <Text>
-          <Strong>{comments?.length}</Strong>
+          <Strong>{commentsCount}</Strong>
         </Text>
       </Badge>
     </Box>
@@ -82,6 +82,7 @@ const CommentCount = ({ comments }) => {
 
 export const CommentsList = ({
   comments,
+  commentsCount,
   onCommentCreated,
   onCommentDelete,
 }) => {
@@ -91,7 +92,7 @@ export const CommentsList = ({
     <>
       <Flex align={"center"} gap={"2"} mb={"3"}>
         <Heading as="h3">Comments</Heading>
-        <CommentCount comments={comments} />
+        <CommentCount commentsCount={commentsCount} />
       </Flex>
 
       {isLoggedIn ? (
