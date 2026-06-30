@@ -6,13 +6,17 @@ const useGetPosts = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const getPosts = () => {
+  const getPosts = async () => {
     setIsLoading(true);
-    postService
-      .getPosts()
-      .then((posts) => setPosts(posts.data))
-      .catch((err) => setError(err))
-      .finally(() => setIsLoading(false));
+
+    try {
+      const posts = await postService.getPosts();
+      setPosts(posts.data);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -27,13 +31,17 @@ const useGetPostById = (postId) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const getPostById = () => {
+  const getPostById = async () => {
     setIsLoading(true);
-    postService
-      .getPostById(postId)
-      .then((post) => setPost(post.data))
-      .catch((err) => setError(err))
-      .finally(() => setIsLoading(false));
+
+    try {
+      const post = await postService.getPostById(postId);
+      setPost(post.data);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {

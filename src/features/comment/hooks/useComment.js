@@ -8,11 +8,15 @@ const useGetComments = (postId) => {
 
   const fetchComments = async () => {
     setIsLoading(true);
-    commentService
-      .getComments(postId)
-      .then((comments) => setComments(comments.data))
-      .catch((err) => setError(err))
-      .finally(() => setIsLoading(false));
+
+    try {
+      const comments = await commentService.getComments(postId);
+      setComments(comments.data);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -27,13 +31,17 @@ const useGetCommentsCount = (postId) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchCommentsCount = () => {
+  const fetchCommentsCount = async () => {
     setIsLoading(true);
-    commentService
-      .getCommentsCount(postId)
-      .then((count) => setCount(count.data))
-      .catch((err) => setError(err))
-      .finally(() => setIsLoading(false));
+
+    try {
+      const count = await commentService.getCommentsCount(postId);
+      setCount(count.data);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -47,21 +55,18 @@ const useCreateComment = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const createComment = ({ content, authorId, postId }) => {
+  const createComment = async ({ content, authorId, postId }) => {
     setIsLoading(true);
     setError(null);
 
-    return commentService
-      .createComment({
-        content,
-        authorId,
-        postId,
-      })
-      .catch((err) => {
-        setError(err);
-        throw err;
-      })
-      .finally(() => setIsLoading(false));
+    try {
+      await commentService.createComment({ content, authorId, postId });
+    } catch (err) {
+      setError(err);
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const resetError = () => setError(null);
