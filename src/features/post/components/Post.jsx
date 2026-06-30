@@ -36,7 +36,8 @@ export const Post = () => {
     refetch: refetchCommentsCount,
   } = useGetCommentsCount(postId);
 
-  const isLoading = isPostLoading || isCommentsLoading;
+  const isLoading =
+    isPostLoading || isCommentsLoading || isCommentsCountLoading;
 
   if (postError) {
     return <ErrorMessage error={postError} />;
