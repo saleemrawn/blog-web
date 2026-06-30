@@ -34,7 +34,9 @@ const useGetPostById = (postId) => {
       .finally(() => setIsLoading(false));
   };
 
-  useEffect(() => getPostById, [postId]);
+  useEffect(() => {
+    getPostById();
+  }, [postId]);
 
   return { post, isLoading, error };
 };
