@@ -76,7 +76,6 @@ export const Post = () => {
               <CommentsList
                 comments={comments}
                 commentsCount={commentsCount}
-                isLoading={isLoading}
                 onCommentCreated={() => {
                   refetchComments();
                   refetchCommentsCount();
