@@ -1,6 +1,11 @@
 import { useParams } from "react-router";
 import { useGetPostById } from "../";
-import { useGetComments, CommentForm, CommentsList } from "../../comment";
+import {
+  useGetComments,
+  useGetCommentsCount,
+  CommentForm,
+  CommentsList,
+} from "../../comment";
 import { ErrorMessage } from "../../../components/ErrorMessage";
 import {
   Box,
@@ -24,6 +29,12 @@ export const Post = () => {
     error: commentsError,
     refetch,
   } = useGetComments(postId);
+  const {
+    count: commentsCount,
+    isLoading: isCommentsCountLoading,
+    error: commentsCountError,
+    refetch: refetchCommentsCount,
+  } = useGetCommentsCount(postId);
 
   const isLoading = isPostLoading || isCommentsLoading;
 
@@ -51,6 +62,7 @@ export const Post = () => {
             <Box>
               <CommentsList
                 comments={comments}
+                commentsCount={commentsCount}
                 isLoading={isLoading}
                 onCommentCreated={refetch}
                 onCommentDelete={refetch}
