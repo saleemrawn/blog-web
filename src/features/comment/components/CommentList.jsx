@@ -42,6 +42,7 @@ const CommentCard = ({ comment, isLoggedInUser, onCommentDelete }) => {
               title={"Delete comment"}
               description={"Are you sure you want to delete?"}
               buttonText={"Delete"}
+              buttonSize={"1"}
               onClick={() => onCommentDelete(comment.id)}
             />
           ) : null}
