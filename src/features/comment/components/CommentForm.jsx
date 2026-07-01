@@ -53,7 +53,7 @@ export const CommentForm = ({ onCommentCreated }) => {
           ))}
           <Form.Control asChild>
             <textarea
-              className="FormControl"
+              className="Textarea"
               aria-label="Add message"
               placeholder="Add message"
               onChange={(e) => {
