@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router";
 import { useAuthContext } from "../../auth";
 import { useCreateComment } from "../../comment";
-import { Flex } from "@radix-ui/themes";
+import { Flex, Button } from "@radix-ui/themes";
 
 export const CommentForm = ({ onCommentCreated }) => {
   const [comment, setComment] = useState("");
@@ -67,7 +67,9 @@ export const CommentForm = ({ onCommentCreated }) => {
       </Form.Field>
 
       <Form.Submit asChild>
-        <button className="Button">Post</button>
+        <Button color="gray" highContrast>
+          Post
+        </Button>
       </Form.Submit>
     </Form.Root>
   );
