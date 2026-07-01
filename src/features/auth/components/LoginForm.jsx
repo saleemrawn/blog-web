@@ -39,6 +39,7 @@ export const LoginForm = () => {
             serverInvalid={hasServerError}
           >
             <Flex direction={"column"} mb={"2"}>
+              <Form.Label className="FormLabel">Username</Form.Label>
               <Form.Control asChild>
                 <input
                   type="text"
@@ -68,6 +69,7 @@ export const LoginForm = () => {
             serverInvalid={hasServerError}
           >
             <Flex direction={"column"} mb={"4"}>
+              <Form.Label className="FormLabel">Password</Form.Label>
               <Form.Control asChild>
                 <input
                   type="password"
