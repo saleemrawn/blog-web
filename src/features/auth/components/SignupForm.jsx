@@ -56,124 +56,126 @@ export const SignupForm = () => {
             createUser({ firstName, lastName, username, password });
           }}
         >
-          <Form.Field
-            className="FormField"
-            name="firstName"
-            serverInvalid={hasServerError}
-          >
-            <Flex direction={"column"} mb={"2"}>
-              <Form.Label className="FormLabel">First name</Form.Label>
-              <Form.Control asChild>
-                <input
-                  type="text"
-                  name="firstName"
-                  id="firstName"
-                  className="Input"
-                  placeholder="First Name"
-                  value={firstName}
-                  onChange={(e) => {
-                    resetError();
-                    setFirstName(e.target.value);
-                  }}
-                  disabled={isLoading}
-                  required
-                />
-              </Form.Control>
+          <Flex direction={"column"} gap={"2"}>
+            <Form.Field
+              className="FormField"
+              name="firstName"
+              serverInvalid={hasServerError}
+            >
+              <Flex direction={"column"} mb={"2"}>
+                <Form.Label className="FormLabel">First name</Form.Label>
+                <Form.Control asChild>
+                  <input
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    className="Input"
+                    placeholder="First Name"
+                    value={firstName}
+                    onChange={(e) => {
+                      resetError();
+                      setFirstName(e.target.value);
+                    }}
+                    disabled={isLoading}
+                    required
+                  />
+                </Form.Control>
 
-              <Form.Message className="FormMessage" match="valueMissing">
-                Required
-              </Form.Message>
-            </Flex>
-          </Form.Field>
+                <Form.Message className="FormMessage" match="valueMissing">
+                  Required
+                </Form.Message>
+              </Flex>
+            </Form.Field>
 
-          <Form.Field
-            className="FormField"
-            name="firstName"
-            serverInvalid={hasServerError}
-          >
-            <Flex direction={"column"} mb={"2"}>
-              <Form.Label className="FormLabel">Last name</Form.Label>
-              <Form.Control asChild>
-                <input
-                  type="text"
-                  name="lastName"
-                  id="lastName"
-                  className="Input"
-                  placeholder="Last Name"
-                  value={lastName}
-                  onChange={(e) => {
-                    resetError();
-                    setLastName(e.target.value);
-                  }}
-                  disabled={isLoading}
-                  required
-                />
-              </Form.Control>
+            <Form.Field
+              className="FormField"
+              name="firstName"
+              serverInvalid={hasServerError}
+            >
+              <Flex direction={"column"} mb={"2"}>
+                <Form.Label className="FormLabel">Last name</Form.Label>
+                <Form.Control asChild>
+                  <input
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    className="Input"
+                    placeholder="Last Name"
+                    value={lastName}
+                    onChange={(e) => {
+                      resetError();
+                      setLastName(e.target.value);
+                    }}
+                    disabled={isLoading}
+                    required
+                  />
+                </Form.Control>
 
-              <Form.Message className="FormMessage" match="valueMissing">
-                Required
-              </Form.Message>
-            </Flex>
-          </Form.Field>
+                <Form.Message className="FormMessage" match="valueMissing">
+                  Required
+                </Form.Message>
+              </Flex>
+            </Form.Field>
 
-          <Form.Field
-            className="FormField"
-            name="username"
-            serverInvalid={hasServerError}
-          >
-            <Flex direction={"column"} mb={"2"}>
-              <Form.Label className="FormLabel">Username</Form.Label>
-              <Form.Control asChild>
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  className="Input"
-                  placeholder="Username"
-                  value={username}
-                  onChange={(e) => {
-                    resetError();
-                    setUsername(e.target.value);
-                  }}
-                  disabled={isLoading}
-                  required
-                />
-              </Form.Control>
+            <Form.Field
+              className="FormField"
+              name="username"
+              serverInvalid={hasServerError}
+            >
+              <Flex direction={"column"} mb={"2"}>
+                <Form.Label className="FormLabel">Username</Form.Label>
+                <Form.Control asChild>
+                  <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    className="Input"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => {
+                      resetError();
+                      setUsername(e.target.value);
+                    }}
+                    disabled={isLoading}
+                    required
+                  />
+                </Form.Control>
 
-              <Form.Message className="FormMessage" match="valueMissing">
-                Required
-              </Form.Message>
-            </Flex>
-          </Form.Field>
+                <Form.Message className="FormMessage" match="valueMissing">
+                  Required
+                </Form.Message>
+              </Flex>
+            </Form.Field>
 
-          <Form.Field
-            className="FormField"
-            name="password"
-            serverInvalid={hasServerError}
-          >
-            <Flex direction={"column"} mb={"4"}>
-              <Form.Label className="FormLabel">Password</Form.Label>
-              <Form.Control asChild>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  className="Input"
-                  placeholder="Password"
-                  onChange={(e) => {
-                    resetError();
-                    setPassword(e.target.value);
-                  }}
-                  disabled={isLoading}
-                  required
-                />
-              </Form.Control>
+            <Form.Field
+              className="FormField"
+              name="password"
+              serverInvalid={hasServerError}
+            >
+              <Flex direction={"column"} mb={"4"}>
+                <Form.Label className="FormLabel">Password</Form.Label>
+                <Form.Control asChild>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    className="Input"
+                    placeholder="Password"
+                    onChange={(e) => {
+                      resetError();
+                      setPassword(e.target.value);
+                    }}
+                    disabled={isLoading}
+                    required
+                  />
+                </Form.Control>
 
-              <Form.Message className="FormMessage" match="valueMissing">
-                Required
-              </Form.Message>
-            </Flex>
-          </Form.Field>
+                <Form.Message className="FormMessage" match="valueMissing">
+                  Required
+                </Form.Message>
+              </Flex>
+            </Form.Field>
+          </Flex>
 
           <Form.Submit asChild>
             <Button size={{ md: "3" }} color="gray" highContrast>
