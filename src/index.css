@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-size: 1rem;
+  background-color: #f2e8df;
+}
+
+.nav-link,
+.post-link {
+  text-decoration: none;
+}
+
+.post-list-item,
+.comment-list-item {
+  border-bottom: 0.0625rem solid #000000;
+}
+
+/** Radix UI Components **/
+.Input,
+.Textarea {
+  font-size: inherit;
+  background-color: #ffffff;
+  border: 0.0625rem solid #000000;
+}
+
+.Input {
+  padding: 0.5rem;
+}
+
+.Textarea {
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  resize: none;
+}
+
+.Input:focus,
+.Input:focus-visible,
+.Input:focus-within,
+.Textarea:focus,
+.Textarea:focus-visible,
+.Textarea:focus-within {
+  outline: 0.0625rem solid #000000;
+}
+
+.FormLabel {
+  margin-bottom: 0.25rem;
+}
+
+.FormMessage {
+  color: #d13415;
+}
+
+.CommentCountBadge {
+  display: flex;
+  justify-content: center;
+  min-width: 1.5rem;
+}
+
+.radix-themes {
+  --default-font-family: "Noto Serif", serif;
+}
