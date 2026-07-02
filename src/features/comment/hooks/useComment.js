@@ -1,5 +1,7 @@
 import * as commentService from "../services/commentService";
 import { useEffect, useState } from "react";
+import { getErrorDetails } from "../../../httpErrors";
+import toast from "react-hot-toast";
 
 const useGetComments = (postId) => {
   const [comments, setComments] = useState([]);
@@ -61,8 +63,11 @@ const useCreateComment = () => {
 
     try {
       await commentService.createComment({ content, authorId, postId });
+      toast.success("Comment posted");
     } catch (err) {
       setError(err);
+      const error = getErrorDetails(err);
+      toast.error(`${error.message} (${error.code})`);
       throw err;
     } finally {
       setIsLoading(false);
@@ -84,8 +89,11 @@ const useDeleteComment = () => {
 
     try {
       await commentService.deleteComment({ postId, commentId });
+      toast.success("Comment deleted");
     } catch (err) {
       setError(err.response);
+      const error = getErrorDetails(err);
+      toast.error(`${error.message} (${error.code})`);
     } finally {
       setIsLoading(false);
     }
