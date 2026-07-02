@@ -15,6 +15,8 @@ export const LoginForm = () => {
 
   return (
     <>
+      <title>Login | The Blog</title>
+
       <Heading size={{ initial: "8", md: "9" }} mb={"4"}>
         Login
       </Heading>

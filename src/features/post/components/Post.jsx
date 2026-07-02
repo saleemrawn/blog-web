@@ -57,6 +57,8 @@ export const Post = () => {
 
   return (
     <>
+      <title>{`${post?.title} | The Blog`}</title>
+
       <Box>
         <Container size={"4"}>
           <Box mb={"6"}>

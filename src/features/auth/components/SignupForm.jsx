@@ -26,6 +26,8 @@ export const SignupForm = () => {
 
   return (
     <>
+      <title>Sign-Up | The Blog</title>
+
       <Heading size={{ initial: "8", md: "9" }} mb={"4"}>
         Sign-Up
       </Heading>
