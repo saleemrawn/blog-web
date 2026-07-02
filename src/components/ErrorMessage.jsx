@@ -1,40 +1,15 @@
 import { Box, Flex, Text, Callout } from "@radix-ui/themes";
-
-const ERROR_MESSAGES = {
-  ERR_NETWORK: "Unable to connect to server.",
-  ECONNABORTED: "Request timed out. Please try again.",
-  ETIMEDOUT: "Request timed out. Please try again.",
-};
-
-const getErrorCode = (error) => {
-  if (error.response) {
-    return error.response?.status;
-  }
-
-  return error.code ?? "Unknown error";
-};
-
-const getErrorMessage = (error) => {
-  if (error.response) {
-    return error.response?.data?.message;
-  }
-
-  return (
-    ERROR_MESSAGES[error.code] ??
-    "Oops, something went wrong. Please try again later."
-  );
-};
+import { getErrorDetails } from "../httpErrors";
 
 export const ErrorMessage = ({ error }) => {
   if (!error) return null;
 
-  const errorCode = getErrorCode(error);
-  const errorMessage = getErrorMessage(error);
+  const err = getErrorDetails(error);
 
   return (
     <Callout.Root color="red" size={{ initial: "2", md: "3" }}>
       <Callout.Text>
-        {errorCode} - {errorMessage}
+        {err.code} - {err.message}
       </Callout.Text>
     </Callout.Root>
   );
