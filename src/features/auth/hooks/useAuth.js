@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuthContext } from "../";
+import { getErrorDetails } from "../../../httpErrors";
 import * as authService from "../services/authService";
+import toast from "react-hot-toast";
 
 const useLogin = () => {
   const navigate = useNavigate();
@@ -18,8 +20,11 @@ const useLogin = () => {
       const user = await authService.login({ username, password });
       setAuth(user);
       navigate(-1, { replace: true });
+      toast.success("Login successful");
     } catch (err) {
       setError(err.response);
+      const error = getErrorDetails(err);
+      toast.error(`${error.message} (${error.code})`);
     } finally {
       setIsLoading(false);
     }
@@ -45,8 +50,11 @@ const useLogout = () => {
       await authService.logout();
       setAuth(null);
       navigate("/", { replace: true });
+      toast.success("Logout successful");
     } catch (err) {
       setError(err);
+      const error = getErrorDetails(err);
+      toast.error(`${error.message} (${error.code})`);
     } finally {
       setIsLoading(false);
     }
