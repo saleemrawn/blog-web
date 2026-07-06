@@ -9,7 +9,7 @@ export const ErrorMessage = ({ error }) => {
   return (
     <Callout.Root color="red" size={{ initial: "2", md: "3" }}>
       <Callout.Text>
-        {err.code} - {err.message}
+        {err?.code ? `${err?.code} -` : null} {err?.message}
       </Callout.Text>
     </Callout.Root>
   );
