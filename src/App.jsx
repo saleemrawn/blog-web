@@ -10,7 +10,7 @@ function App() {
       <Container height={"100vh"} p={{ initial: "3", lg: "0" }}>
         <Grid columns={"1"} rows={"auto 1fr auto"} gap={"8"} height={"100%"}>
           <Header />
-          <Toaster toastOptions={{ duration: 3000 }} />
+          <Toaster toastOptions={{ duration: 2000 }} />
           <main>
             <Outlet />
           </main>
