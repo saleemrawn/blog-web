@@ -3,7 +3,7 @@ import api from "../../../adapters/api.js";
 const basePath = "/auth";
 
 const login = async ({ username, password }) => {
-  const res = await api.post(`${basePath}/login`, {
+  const res = await api.post(`${basePath}/login/web`, {
     username,
     password,
   });
