@@ -23,7 +23,7 @@ const CommentCard = ({ comment, isLoggedInUser, onCommentDelete }) => {
         py={"4"}
         className="comment-list-item"
       >
-        <Text>{comment.content}</Text>
+        <Text dangerouslySetInnerHTML={{ __html: comment.content }} />
 
         <Flex justify={"between"} align={"center"}>
           <Flex gap={"3"}>
