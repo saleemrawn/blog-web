@@ -91,7 +91,7 @@ export const SignupForm = () => {
 
             <Form.Field
               className="FormField"
-              name="firstName"
+              name="lastName"
               serverInvalid={hasServerError}
             >
               <Flex direction={"column"} mb={"2"}>
