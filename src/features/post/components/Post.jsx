@@ -63,13 +63,15 @@ export const Post = () => {
         <Container size={"4"}>
           <Box mb={"6"}>
             <Skeleton loading={isLoading}>
-              <Heading size={{ initial: "6", sm: "8" }} mb="6">
-                {post?.title}
-              </Heading>
+              <Heading
+                size={{ initial: "6", sm: "8" }}
+                mb="6"
+                dangerouslySetInnerHTML={{ __html: post?.title }}
+              />
             </Skeleton>
 
             <Skeleton loading={isLoading}>
-              <Text>{post?.content}</Text>
+              <Text dangerouslySetInnerHTML={{ __html: post?.content }} />
             </Skeleton>
           </Box>
 
