@@ -16,7 +16,11 @@ const ERROR_CASES = {
 
 const getErrorDetails = (error) => {
   if (error.request) {
-    return ERROR_CASES[error.code] ?? ERROR_CASES.default;
+    return (
+      ERROR_CASES[error.code] ??
+      ERROR_CASES[error.status] ??
+      ERROR_CASES.default
+    );
   }
 
   return ERROR_CASES[error.status] ?? ERROR_CASES.default;
