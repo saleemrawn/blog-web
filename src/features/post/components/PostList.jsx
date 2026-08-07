@@ -26,8 +26,8 @@ const PostCard = ({ post }) => {
           align={{ initial: "start", sm: "center" }}
           gap={"4"}
         >
-          <PostCategories categories={post?.categories} />
           <CommentCount postId={post?.id} />
+          <PostCategories categories={post?.categories} />
         </Flex>
       </Flex>
     </>
