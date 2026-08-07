@@ -1,11 +1,17 @@
 import { Link } from "react-router";
 import { CommentCount } from "../../comment";
-import { Box, Flex, Link as RadixLink } from "@radix-ui/themes";
+import { format } from "date-fns";
+import { Box, Flex, Text, Link as RadixLink } from "@radix-ui/themes";
+
+const PostDate = ({ post }) => {
+  return <Text size={"1"}>{format(post.createdAt, "do MMM yyyy")}</Text>;
+};
 
 const PostCard = ({ post }) => {
   return (
     <>
       <Flex direction={"column"} gap={"2"}>
+        <PostDate post={post} />
         <RadixLink weight={"bold"} color="gray" highContrast asChild>
           <Link className="post-link" to={`/posts/${post.id}`}>
             {post.title}
