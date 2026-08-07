@@ -24,7 +24,7 @@ const useLogin = () => {
     } catch (err) {
       setError(err.response);
       const error = getErrorDetails(err);
-      toast.error(`${error.message} (${error.code})`);
+      toast.error(`${error.message} ${error.code ? error.code : ""}`);
     } finally {
       setIsLoading(false);
     }
@@ -54,7 +54,7 @@ const useLogout = () => {
     } catch (err) {
       setError(err);
       const error = getErrorDetails(err);
-      toast.error(`${error.message} (${error.code})`);
+      toast.error(`${error.message} ${error.code ? error.code : ""}`);
     } finally {
       setIsLoading(false);
     }
