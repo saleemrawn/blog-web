@@ -18,6 +18,10 @@ button:hover {
   cursor: pointer;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 .nav-link,
 .post-link {
   text-decoration: none;
