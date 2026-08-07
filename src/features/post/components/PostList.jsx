@@ -1,12 +1,7 @@
 import { Link } from "react-router";
-import { PostCategories } from "../";
+import { PostCategories, PostDate } from "../";
 import { CommentCount } from "../../comment";
-import { format } from "date-fns";
 import { Box, Flex, Text, Badge, Link as RadixLink } from "@radix-ui/themes";
-
-const PostDate = ({ postDate }) => {
-  return <Text size={"1"}>{format(postDate, "do MMM yyyy")}</Text>;
-};
 
 const PostCard = ({ post }) => {
   return (
