@@ -26,8 +26,8 @@ const PostCard = ({ post }) => {
         <PostDate postDate={post?.createdAt} />
 
         <RadixLink weight={"bold"} color="gray" highContrast asChild>
-          <Link className="post-link" to={`/posts/${post.id}`}>
-            {post.title}
+          <Link className="post-link" to={`/posts/${post?.id}`}>
+            {post?.title}
           </Link>
         </RadixLink>
 
@@ -37,8 +37,8 @@ const PostCard = ({ post }) => {
           align={{ initial: "start", sm: "center" }}
           gap={"4"}
         >
-          <PostCategories categories={post.categories} />
-          <CommentCount postId={post.id} />
+          <PostCategories categories={post?.categories} />
+          <CommentCount postId={post?.id} />
         </Flex>
       </Flex>
     </>
@@ -50,7 +50,7 @@ export function PostList({ posts }) {
     <>
       <Flex direction={"column"}>
         {posts.map((post) => (
-          <Box key={post.id} className="post-list-item" py={"4"}>
+          <Box key={post?.id} className="post-list-item" py={"4"}>
             <PostCard post={post} />
           </Box>
         ))}
