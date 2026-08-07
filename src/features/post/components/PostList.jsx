@@ -1,22 +1,11 @@
 import { Link } from "react-router";
+import { PostCategories } from "../";
 import { CommentCount } from "../../comment";
 import { format } from "date-fns";
 import { Box, Flex, Text, Badge, Link as RadixLink } from "@radix-ui/themes";
 
 const PostDate = ({ postDate }) => {
   return <Text size={"1"}>{format(postDate, "do MMM yyyy")}</Text>;
-};
-
-const PostCategories = ({ categories }) => {
-  return (
-    <Flex direction={"row"} gap={"4px"}>
-      {categories?.map((category) => (
-        <Badge color="gray" variant="outline" highContrast>
-          {category?.name}
-        </Badge>
-      ))}
-    </Flex>
-  );
 };
 
 const PostCard = ({ post }) => {
