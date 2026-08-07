@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { useGetPostById } from "../";
+import { useGetPostById, PostCategories, PostDate } from "../";
 import {
   useGetComments,
   useGetCommentsCount,
@@ -11,6 +11,7 @@ import { ErrorMessage } from "../../../components/ErrorMessage";
 import {
   Box,
   Container,
+  Flex,
   Heading,
   Skeleton,
   Spinner,
@@ -65,9 +66,20 @@ export const Post = () => {
             <Skeleton loading={isLoading}>
               <Heading
                 size={{ initial: "6", sm: "8" }}
-                mb="6"
+                mb="5"
                 dangerouslySetInnerHTML={{ __html: post?.title }}
               />
+
+              <Flex
+                align={"center"}
+                gap={"4"}
+                pt={"5"}
+                mb={"6"}
+                className="post-meta-data"
+              >
+                <PostDate postDate={post?.createdAt} />
+                <PostCategories categories={post?.categories} />
+              </Flex>
             </Skeleton>
 
             <Skeleton loading={isLoading}>

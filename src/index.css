@@ -23,6 +23,10 @@ body {
   border-bottom: 0.0625rem solid #000000;
 }
 
+.post-meta-data {
+  border-top: 0.0625rem dashed rgba(0, 0, 0, 0.4);
+}
+
 /** Radix UI Components **/
 .Input,
 .Textarea {
