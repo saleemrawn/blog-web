@@ -1,7 +1,7 @@
 import { Flex, Badge } from "@radix-ui/themes";
 
 const PostCategories = ({ categories }) => {
-  return (
+  return categories?.length > 0 ? (
     <Flex direction={"row"} gap={"4px"}>
       {categories?.map((category) => (
         <Badge key={category.id} color="gray" variant="outline" highContrast>
@@ -9,7 +9,7 @@ const PostCategories = ({ categories }) => {
         </Badge>
       ))}
     </Flex>
-  );
+  ) : null;
 };
 
 export { PostCategories };
