@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useOutletContext, useParams } from "react-router";
 import { useGetPostById, PostCategories, PostDate } from "../";
 import {
   useGetComments,
@@ -19,6 +19,7 @@ import {
 } from "@radix-ui/themes";
 
 export const Post = () => {
+  const appName = useOutletContext();
   const { postId } = useParams();
   const {
     post,
@@ -58,7 +59,7 @@ export const Post = () => {
 
   return (
     <>
-      <title>{`${post?.title} | The Blog`}</title>
+      <title>{`${post?.title} | ${appName}`}</title>
 
       <Box>
         <Container size={"4"}>

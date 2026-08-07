@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Form } from "radix-ui";
 import { useAuthContext, useLogin } from "../";
 import { Text, Button, Flex, Heading, Spinner, Box } from "@radix-ui/themes";
-import { Link } from "react-router";
+import { Link, useOutletContext } from "react-router";
 
 export const LoginForm = () => {
+  const appName = useOutletContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { isLoggedIn } = useAuthContext();
@@ -15,7 +16,7 @@ export const LoginForm = () => {
 
   return (
     <>
-      <title>Login | The Blog</title>
+      <title>{`Login | ${appName}`}</title>
 
       <Heading size={{ initial: "8", md: "9" }} mb={"4"}>
         Login

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useOutletContext } from "react-router";
 import { useAuthContext } from "../";
 import { useCreateUser } from "../../user";
 import { Form } from "radix-ui";
@@ -14,6 +14,7 @@ import {
 } from "@radix-ui/themes";
 
 export const SignupForm = () => {
+  const appName = useOutletContext();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
@@ -26,7 +27,7 @@ export const SignupForm = () => {
 
   return (
     <>
-      <title>Sign-Up | The Blog</title>
+      <title>{`Sign-Up | ${appName}`}</title>
 
       <Heading size={{ initial: "8", md: "9" }} mb={"4"}>
         Sign-Up

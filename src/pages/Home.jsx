@@ -1,12 +1,16 @@
+import { useOutletContext } from "react-router";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { useGetPosts, PostList } from "../features/post";
 import { Box, Container, Heading, Skeleton } from "@radix-ui/themes";
 
 const Home = () => {
+  const appName = useOutletContext();
   const { posts, isLoading, error } = useGetPosts();
 
   return (
     <>
+      <title>{appName}</title>
+
       <Box>
         <Container size={"4"}>
           <Heading size={{ initial: "8", md: "9" }} mb={"4"}>

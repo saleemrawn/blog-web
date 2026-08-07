@@ -5,6 +5,8 @@ import { Toaster } from "react-hot-toast";
 import "./App.css";
 
 function App() {
+  const appName = "The Blog";
+
   return (
     <>
       <Container height={"100vh"} p={{ initial: "3", lg: "0" }}>
@@ -12,7 +14,7 @@ function App() {
           <Header />
           <Toaster toastOptions={{ duration: 2000 }} />
           <main>
-            <Outlet />
+            <Outlet context={appName} />
           </main>
           <Footer />
         </Grid>
