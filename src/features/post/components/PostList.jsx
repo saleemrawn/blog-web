@@ -3,8 +3,8 @@ import { CommentCount } from "../../comment";
 import { format } from "date-fns";
 import { Box, Flex, Text, Badge, Link as RadixLink } from "@radix-ui/themes";
 
-const PostDate = ({ post }) => {
-  return <Text size={"1"}>{format(post.createdAt, "do MMM yyyy")}</Text>;
+const PostDate = ({ postDate }) => {
+  return <Text size={"1"}>{format(postDate, "do MMM yyyy")}</Text>;
 };
 
 const PostCategories = ({ categories }) => {
@@ -23,7 +23,7 @@ const PostCard = ({ post }) => {
   return (
     <>
       <Flex direction={"column"} gap={"2"}>
-        <PostDate post={post} />
+        <PostDate postDate={post?.createdAt} />
 
         <RadixLink weight={"bold"} color="gray" highContrast asChild>
           <Link className="post-link" to={`/posts/${post.id}`}>
