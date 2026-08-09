@@ -22,9 +22,11 @@ const useLogin = () => {
       navigate(-1, { replace: true });
       toast.success("Login successful");
     } catch (err) {
-      setError(err.response);
-      const error = getErrorDetails(err);
-      toast.error(`${error.message} ${error.code ? error.code : ""}`);
+      const errDetails = getErrorDetails(err);
+      setError(errDetails);
+      toast.error(
+        `${errDetails?.message} ${errDetails?.code ? `(${errDetails?.code})` : ""}`,
+      );
     } finally {
       setIsLoading(false);
     }
@@ -52,9 +54,11 @@ const useLogout = () => {
       navigate("/", { replace: true });
       toast.success("Logout successful");
     } catch (err) {
-      setError(err);
-      const error = getErrorDetails(err);
-      toast.error(`${error.message} ${error.code ? error.code : ""}`);
+      const errDetails = getErrorDetails(err);
+      setError(errDetails);
+      toast.error(
+        `${errDetails?.message} ${errDetails?.code ? `(${errDetails?.code})` : ""}`,
+      );
     } finally {
       setIsLoading(false);
     }

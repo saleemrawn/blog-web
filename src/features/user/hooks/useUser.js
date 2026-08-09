@@ -1,4 +1,5 @@
 import * as userService from "../services/userService";
+import toast from "react-hot-toast";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -15,7 +16,11 @@ const useCreateUser = () => {
       await userService.createUser({ firstName, lastName, username, password });
       navigate("/", { replace: true });
     } catch (err) {
-      setError(err.response);
+      const errDetails = getErrorDetails(err);
+      setError(errDetails);
+      toast.error(
+        `${errDetails?.message} ${errDetails?.code ? `(${errDetails?.code})` : ""}`,
+      );
     } finally {
       setIsLoading(false);
     }

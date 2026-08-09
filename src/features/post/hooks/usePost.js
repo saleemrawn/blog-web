@@ -1,5 +1,7 @@
 import * as postService from "../services/postService";
+import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
+import { getErrorDetails } from "../../../httpErrors";
 
 const useGetPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -13,7 +15,11 @@ const useGetPosts = () => {
       const posts = await postService.getPosts();
       setPosts(posts.data);
     } catch (err) {
-      setError(err);
+      const errDetails = getErrorDetails(err);
+      setError(errDetails);
+      toast.error(
+        `${errDetails?.message} ${errDetails?.code ? `(${errDetails?.code})` : ""}`,
+      );
     } finally {
       setIsLoading(false);
     }
@@ -38,7 +44,8 @@ const useGetPostById = (postId) => {
       const post = await postService.getPostById(postId);
       setPost(post.data);
     } catch (err) {
-      setError(err);
+      const errDetails = getErrorDetails(err);
+      setError(errDetails);
     } finally {
       setIsLoading(false);
     }

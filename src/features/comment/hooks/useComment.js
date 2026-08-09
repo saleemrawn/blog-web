@@ -15,7 +15,8 @@ const useGetComments = (postId) => {
       const comments = await commentService.getComments(postId);
       setComments(comments.data);
     } catch (err) {
-      setError(err);
+      const errDetails = getErrorDetails(err);
+      setError(errDetails);
     } finally {
       setIsLoading(false);
     }
@@ -40,7 +41,8 @@ const useGetCommentsCount = (postId) => {
       const count = await commentService.getCommentsCount(postId);
       setCount(count.data);
     } catch (err) {
-      setError(err);
+      const errDetails = getErrorDetails(err);
+      setError(errDetails);
     } finally {
       setIsLoading(false);
     }
@@ -65,10 +67,11 @@ const useCreateComment = () => {
       await commentService.createComment({ content, authorId, postId });
       toast.success("Comment posted");
     } catch (err) {
-      setError(err);
-      const error = getErrorDetails(err);
-      toast.error(`${error.message} (${error.code})`);
-      throw err;
+      const errDetails = getErrorDetails(err);
+      setError(errDetails);
+      toast.error(
+        `${errDetails?.message} ${errDetails?.code ? `(${errDetails?.code})` : ""}`,
+      );
     } finally {
       setIsLoading(false);
     }
@@ -91,9 +94,11 @@ const useDeleteComment = () => {
       await commentService.deleteComment({ postId, commentId });
       toast.success("Comment deleted");
     } catch (err) {
-      setError(err.response);
-      const error = getErrorDetails(err);
-      toast.error(`${error.message} (${error.code})`);
+      const errDetails = getErrorDetails(err);
+      setError(errDetails);
+      toast.error(
+        `${errDetails?.message} ${errDetails?.code ? `(${errDetails?.code})` : ""}`,
+      );
     } finally {
       setIsLoading(false);
     }
