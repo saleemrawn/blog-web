@@ -69,6 +69,7 @@ a:hover {
 
 .FormMessage {
   color: #d13415;
+  margin-bottom: 0.5rem;
 }
 
 .CommentCountBadge {
