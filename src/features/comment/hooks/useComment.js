@@ -72,6 +72,7 @@ const useCreateComment = () => {
       toast.error(
         `${errDetails?.message} ${errDetails?.code ? `(${errDetails?.code})` : ""}`,
       );
+      throw errDetails;
     } finally {
       setIsLoading(false);
     }
