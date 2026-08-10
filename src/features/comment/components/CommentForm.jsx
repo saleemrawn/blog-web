@@ -10,7 +10,7 @@ export const CommentForm = ({ onCommentCreated }) => {
   const { createComment, isLoading, error, resetError } = useCreateComment();
   const { user } = useAuthContext();
   const { postId } = useParams();
-  const serverErrorMessages = error?.response?.data?.errors ?? [];
+  const serverErrorMessages = error?.errors ?? [];
   const hasServerError = serverErrorMessages.length > 0;
   const authorId = Number(user?.id);
   const postIdNumber = Number(postId);
